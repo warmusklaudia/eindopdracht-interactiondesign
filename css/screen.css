@@ -24,6 +24,7 @@
   --global-color: #a200ff;
   --global-color-dark: #410066;
   --global-color-x-dark: #200033;
+
   --global-color-transparent: #a200ffbf;
   --global-color-x-transparent: #a200ff4d;
 
@@ -48,10 +49,29 @@
   --global-page-backgroundColor: var(--global-color-neutral-xx-light);
   --global-selection-backgroundColor: var(--global-color-beta);
 
+  /* transitions */
+  --global-transitionEasing-out: ease-out;
+  --global-transitionEasing-out-cubic: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --global-transitionDuration-alpha: 0.1s;
+  --global-transitionDuration-beta: 0.2s;
+  --global-transitionDuration-gamma: 0.3s;
+
+  /* border radius */
+  --global-borderRadius: 3px;
+  --global-borderWidth: 1px;
+
+  /* transitions */
+  --global-transitionEasing-out: ease-out;
+  --global-transitionEasing-out-cubic: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --global-transitionDuration-alpha: 0.1s;
+  --global-transitionDuration-beta: 0.2s;
+  --global-transitionDuration-gamma: 0.3s;
+
   /* Baseline settings */
   --global-baseline: 8px;
   --global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
 
+  --global-whitespace-xxs: calc(var(--global-baseline) * 0.25); /* = 2px */
   --global-whitespace-xs: calc(var(--global-baseline) * 0.5); /* = 4px */
   --global-whitespace-sm: calc(var(--global-baseline) * 1); /*  = 8px */
   --global-whitespace-md: calc(var(--global-baseline) * 2); /*  = 16px */
@@ -64,8 +84,8 @@
   --global-placeholder-color: var(--global-color-neutral-x-light);
   --global-input-backgroundColor: White;
   --global-input-color: var(--global-color-neutral-xxx-dark);
-  --global-input-borderColor: var(--global-color-neutral-xxx-light);
-  --global-input-hover-borderColor: var(--global-color-neutral-xx-light);
+  --global-input-borderColor: var(--global-color-neutral-x-light);
+  --global-input-hover-borderColor: var(--global-color-neutral-light);
   --global-input-focus-borderColor: var(--global-color);
   --global-input-error-borderColor: var(--global-color-error);
   --global-input-focus-boxShadowSpread: 0 0 0 3px;
@@ -85,12 +105,13 @@
 
 html {
   background-color: var(--global-page-backgroundColor);
+  color: var(--global-page-color);
   font-size: 16px;
   line-height: 1.5;
   font-family: 'Metropolis Web', sans-serif;
   box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
 }
 
 *,
@@ -502,7 +523,7 @@ input::placeholder {
   --logo__path--2--fill: var(--global-color-x-dark);
   --logo__path--3--fill: var(--global-color);
   --logo__stoke--color: var(--global-color-x-dark);
-  height: var(--global-whitespace-lg);
+  height: var(--global-whitespace-xl);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -534,6 +555,45 @@ input::placeholder {
 }
 
 /*
+  Component: Card
+  ---
+  Card with box shadow
+*/
+
+.c-card {
+  --card-backgroundColor: var(--global-color-neutral-xxx-light);
+  --card-borderRadius: var(--global-borderRadius);
+  background-color: var(--card-backgroundColor);
+  margin-bottom: var(--global-whitespace);
+  border-radius: var(--card-borderRadius);
+  box-shadow: 0 0 0 1px rgba(32, 0, 51, 0.05), 0 0 8px rgba(32, 0, 51, 0.3);
+  overflow: hidden;
+}
+
+.c-card__body {
+  padding: var(--global-whitespace) var(--global-whitespace) 0;
+  overflow: auto;
+  text-align: center;
+}
+
+.c-card__day {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.5;
+  margin: 0 0 var(--global-whitespace-xs);
+}
+.c-card__info {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 0 var(--global-whitespace-xs);
+}
+
+.c-card__calculate {
+  padding-top: var(--global-whitespace-lg);
+}
+
+/*
   Component: Forms
   ---
   Everything form related here
@@ -555,13 +615,31 @@ input::placeholder {
 */
 
 .c-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  border: var(--global-borderWidth) solid var(--global-color-neutral-xx-light);
+  border-radius: var(--global-borderRadius);
+  background-color: var(--global-input-backgroundColor);
+  color: var(--global-input-color);
+
+  font-family: inherit;
+  font-size: 16px;
+  line-height: calc(var(--global-baseline) * 2);
+  padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-sm);
+  outline: none;
+  transition: border var(--global-transitionDuration-alpha), box-shadow var(--global-transitionDuration-alpha);
 }
 
 .c-input:hover {
+  border-color: var(--global-input-hover-borderColor);
 }
 
 .c-input:focus,
 .c-input:active {
+  border-color: var(--global-input-focus-borderColor);
+  box-shadow: var(--global-input-focus-boxShadowSpread) var(--global-input-focus-boxShadowColor);
 }
 
 /*
@@ -571,11 +649,12 @@ input::placeholder {
 */
 
 .c-label {
+  --label-color: var(--global-color-neutral-xxx-dark);
   margin-bottom: 0;
-  padding-bottom: var(--global-whitespace-sm);
+  padding-bottom: var(--global-whitespace-xxs);
   font-size: 14px;
   line-height: 16px;
-  color: var(--label-color, var(--global-color-neutral-xx-dark));
+  color: var(--label-color);
   display: flex;
   justify-content: space-between;
 }
@@ -614,6 +693,17 @@ input::placeholder {
 .c-button:focus {
 }
 .c-button:active {
+}
+
+/*
+  Component: Custom Select
+  ---
+  Custom select dropdown
+*/
+
+.c-custom-select {
+  display: block;
+  position: relative;
 }
 
 /*------------------------------------*\
