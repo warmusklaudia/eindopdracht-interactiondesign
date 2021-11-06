@@ -9,14 +9,16 @@
       <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
       <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
       <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-      <link rel="manifest" href="site.webmanifest">
+      <!-- <link rel="manifest" href="site.webmanifest"> -->
       <link rel="stylesheet" href="css/screen.css"> 
       <link rel="stylesheet" href="css/normalize.css">
-      
+      <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+      <script src="script/app.js"></script>
+
   </head>
   <body>
     <section class="o-row o-row--lg">
-      <div class="o-container">   
+      <div class="o-container u-max-width-xs">   
         <h1 class="c-logo">    
           <svg class="c-logo__symbol" id="Hourglass" data-name="Hourglass" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112.24 31.84">
             <g>
@@ -44,10 +46,11 @@
           <div class="c-card__body">
             <div>
               <h2 class="c-card__day">    
-                  Tuesday 26 October
+                  <span class="js-day-of-week">Tuesday</span> <span class="js-day-of-month">26</span> <span class="js-month">October</span> 
               </h2>
-              <p class="c-card__info">Today is the 299 day of the year</p>
-              <p class="c-card__info">There are 66 days left until the end of the year </p>
+              <p class="c-card__info">Today is the <span class="js-day-of-year">299</span> day of the year</p>
+              <p class="c-card__info">There are <span class="js-days-left-this-year">66</span> days left until the end of the year </p>
+              <div class="js-chart" id="DayChart"></div>
             </div>
             <div class="c-card__calculate">
               <p class="c-form-field">
@@ -66,7 +69,7 @@
 
             </p>
             <p>
-                <button>Calculate!</button>
+                <button class="o-button-reset c-button">Calculate!</button>
             </p>
             <p>There are still 240 days to the summer holiday.</p>
             </div>

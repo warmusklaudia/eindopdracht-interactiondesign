@@ -21,12 +21,12 @@
 :root {
   /* Global colors */
   --global-color-light: #e3b3ff;
-  --global-color: #a200ff;
+  --global-color: #9b47cc;
   --global-color-dark: #410066;
   --global-color-x-dark: #200033;
 
-  --global-color-transparent: #a200ffbf;
-  --global-color-x-transparent: #a200ff4d;
+  --global-color-transparent: #9b47ccbf;
+  --global-color-x-transparent: #9b47cc4d;
 
   --global-color-neutral-xxx-light: #fefcff;
   --global-color-neutral-xx-light: #e2dbe6;
@@ -476,18 +476,13 @@ input::placeholder {
   overflow: visible;
   background: transparent;
 
-  /* inherit font & color from ancestor */
   color: inherit;
   font: inherit;
 
-  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
   line-height: normal;
 
-  /* Corrects font smoothing for webkit */
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
-
-  /* Corrects inability to style clickable `input` types in iOS */
   -webkit-appearance: none;
 }
 
@@ -521,13 +516,13 @@ input::placeholder {
 .c-logo {
   --logo__path--1--fill: white;
   --logo__path--2--fill: var(--global-color-x-dark);
-  --logo__path--3--fill: var(--global-color);
+  --logo__path--3--fill: var(--global-color-dark);
   --logo__stoke--color: var(--global-color-x-dark);
   height: var(--global-whitespace-xl);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--global-whitespace-xl);
+  margin-bottom: var(--global-whitespace-lg);
 }
 
 .c-logo__symbol {
@@ -629,7 +624,6 @@ input::placeholder {
   line-height: calc(var(--global-baseline) * 2);
   padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-sm);
   outline: none;
-  transition: border var(--global-transitionDuration-alpha), box-shadow var(--global-transitionDuration-alpha);
 }
 
 .c-input:hover {
@@ -685,14 +679,42 @@ input::placeholder {
 */
 
 .c-button {
-}
+  --button-borderColor: var(--global-color-x-dark);
+  --button-hover-borderColor: var(--global-color-x-dark);
+  --button-focus-borderColor: var(--global-color-x-dark);
+  --button-active-borderColor: var(--global-color-x-dark);
 
+  --button-backgroundColor: var(--global-color-dark);
+  --button-hover-backgroundColor: var(--global-color);
+  --button-focus-backgroundColor: var(--global-color-dark);
+  --button-active-backgroundColor: var(--global-color-x-dark);
+
+  --button-focus-boxShadowColor: var(--global-input-focus-boxShadowColor);
+
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--global-color-neutral-xxx-light);
+  border-radius: var(--global-borderRadius);
+  border: var(--global-borderWidth) solid var(--button-borderColor);
+  background-color: var(--button-backgroundColor);
+  line-height: calc(var(--global-baseline) * 3);
+  padding: calc(var(--global-baseline) - var(--global-borderWidth)) var(--global-whitespace-md);
+  width: 50%;
+  outline: none;
+}
 .c-button:hover {
+  border-color: var(--button-hover-borderColor);
+  background-color: var(--button-hover-backgroundColor);
 }
 
 .c-button:focus {
+  background-color: var(--button-focus-backgroundColor);
+  border-color: var(--button-focus-borderColor);
+  box-shadow: var(--global-input-focus-boxShadowSpread) var(--button-focus-boxShadowColor);
 }
 .c-button:active {
+  background-color: var(--button-active-backgroundColor);
+  border-color: var(--button-active-borderColor);
 }
 
 /*
