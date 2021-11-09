@@ -248,7 +248,7 @@ a:active {
 
 label,
 input {
-  display: block;
+  display: inline;
 }
 
 select {
@@ -624,6 +624,7 @@ input::placeholder {
   line-height: calc(var(--global-baseline) * 2);
   padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-sm);
   outline: none;
+  transition: all var(--global-transitionDuration-gamma);
 }
 
 .c-input:hover {
@@ -701,6 +702,8 @@ input::placeholder {
   padding: calc(var(--global-baseline) - var(--global-borderWidth)) var(--global-whitespace-md);
   width: 50%;
   outline: none;
+  cursor: pointer;
+  transition: all var(--global-transitionDuration-gamma);
 }
 .c-button:hover {
   border-color: var(--button-hover-borderColor);

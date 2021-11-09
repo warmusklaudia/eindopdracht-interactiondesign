@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Christmas holiday",
+        "abbr": "christmas",
+        "startDay": "2021-12-27"
+    },
+    {
+        "name": "Spring holiday",
+        "abbr": "spring",
+        "startDay": "2022-02-28"
+    },
+    {
+        "name": "Easter holiday",
+        "abbr": "easter",
+        "startDay": "2022-04-04"
+    },
+    {
+        "name": "Summer holiday",
+        "abbr": "summer",
+        "startDay": "2022-07-01"
+    },
+    {
+        "name": "Autumn holiday",
+        "abbr": "autumn",
+        "startDay": "2022-10-31"
+    }
+]

@@ -13,6 +13,7 @@
       <link rel="stylesheet" href="css/screen.css"> 
       <link rel="stylesheet" href="css/normalize.css">
       <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+      <script src="script/dataHandler.js"></script>
       <script src="script/app.js"></script>
 
   </head>
@@ -46,7 +47,7 @@
           <div class="c-card__body">
             <div>
               <h2 class="c-card__day">    
-                  <span class="js-day-of-week">Tuesday</span> <span class="js-day-of-month">26</span> <span class="js-month">October</span> 
+                  <span class="js-day-of-week">Tuesday</span> <span class="js-day-of-month">26</span> <span class="js-month">October</span> <span class="js-year">2022</span>
               </h2>
               <p class="c-card__info">Today is the <span class="js-day-of-year">299</span> day of the year</p>
               <p class="c-card__info">There are <span class="js-days-left-this-year">66</span> days left until the end of the year </p>
@@ -58,20 +59,22 @@
                     Select holiday
                 </label>
                 <span class="c-custom-select">
-                    <select class="c-input c-custom-select__input" name="holiday" id="holiday">
-                    <option value="christmas">Christmas holiday</option>
-                    <option value="winter">Winter holiday</option>
-                    <option value="spring">Spring holiday</option>
-                    <option value="summer">Summer holiday</option>
-                    <option value="autumn">Autumn holiday</option>
+                    <select class="c-input c-custom-select__input js-holiday" name="holiday" id="holiday">
+                      <option value="" selected="selected" disabled>Choose holiday</option>
+                    <!-- <option value="holiday1">Holiday 1</option>
+                    <option value="holiday2">Holiday 2</option>
+                    <option value="holiday3">Holiday 3</option>
+                    <option value="holiday4">Holiday 4</option>
+                    <option value="holiday5">Holiday 5</option> -->
                 </select>
                 </span>
 
             </p>
             <p>
-                <button class="o-button-reset c-button">Calculate!</button>
+                <!-- <button class="o-button-reset c-button js-btn">Calculate!</button> -->
+                <input type= "button" class="o-button-reset c-button js-btn" value="Calculate!" />
             </p>
-            <p>There are still 240 days to the summer holiday.</p>
+            <p>There are still 240 days to the <span class="js-selected-holiday">summer</span> holiday.</p>
             </div>
           </div>
         </form>
