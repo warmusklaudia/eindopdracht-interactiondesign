@@ -106,7 +106,7 @@
 html {
   background-color: var(--global-page-backgroundColor);
   color: var(--global-page-color);
-  font-size: 16px;
+  font-size: 100%;
   line-height: 1.5;
   font-family: 'Metropolis Web', sans-serif;
   box-sizing: border-box;
@@ -160,29 +160,29 @@ h3 {
 }
 
 h1 {
-  font-size: 36px;
-  line-height: 48px;
+  font-size: 2.25rem;
+  line-height: 3rem;
   margin: 0 0 var(--global-whitespace);
 }
 
 h2 {
-  font-size: 32px;
-  line-height: 40px;
+  font-size: 2rem;
+  line-height: 2.5rem;
   margin: 0 0 var(--global-whitespace);
 }
 
 h3 {
-  font-size: 26px;
-  line-height: 32px;
+  font-size: 1.5rem;
+  line-height: 2rem;
   margin: 0 0 var(--global-whitespace);
 }
 
 h4,
 h5,
 h6 {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
-  line-height: 24px;
+  line-height: 1.5rem;
   margin: 0 0 var(--global-whitespace);
 }
 
@@ -208,8 +208,8 @@ li ol {
 
 blockquote {
   font-style: normal;
-  font-size: 23px;
-  line-height: 32px;
+  font-size: 1.5rem;
+  line-height: 2rem;
   margin: 0 0 var(--global-whitespace);
 }
 
@@ -220,8 +220,8 @@ blockquote * {
 
 figcaption {
   font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 0.75rem;
+  line-height: 1rem;
   margin-top: var(--global-whitespace-sm);
 }
 
@@ -573,13 +573,13 @@ input::placeholder {
 
 .c-card__day {
   font-weight: 600;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 1.5;
   margin: 0 0 var(--global-whitespace-xs);
 }
 .c-card__info {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.5;
   margin: 0 0 var(--global-whitespace-xs);
 }
@@ -620,7 +620,7 @@ input::placeholder {
   color: var(--global-input-color);
 
   font-family: inherit;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: calc(var(--global-baseline) * 2);
   padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-sm);
   outline: none;
@@ -647,8 +647,8 @@ input::placeholder {
   --label-color: var(--global-color-neutral-xxx-dark);
   margin-bottom: 0;
   padding-bottom: var(--global-whitespace-xxs);
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 0.87rem;
+  line-height: 1rem;
   color: var(--label-color);
   display: flex;
   justify-content: space-between;
@@ -692,7 +692,7 @@ input::placeholder {
 
   --button-focus-boxShadowColor: var(--global-input-focus-boxShadowColor);
 
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--global-color-neutral-xxx-light);
   border-radius: var(--global-borderRadius);
