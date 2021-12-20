@@ -42,8 +42,6 @@
   --global-color-error-transparent: #ff3333bf;
   --global-color-error-x-transparent: #ff33334d;
 
-  --global-color-beta: #3385ff;
-
   /* global page settings */
   --global-page-color: var(--global-color-neutral-xxx-dark);
   --global-page-backgroundColor: var(--global-color-neutral-xx-light);
@@ -110,8 +108,8 @@ html {
   line-height: 1.5;
   font-family: 'Metropolis Web', sans-serif;
   box-sizing: border-box;
-  /* -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 *,
@@ -130,6 +128,14 @@ html {
   background: var(--global-selection-backgroundColor);
   color: white;
   text-shadow: none;
+}
+
+body {
+  min-height: 100vh;
+  padding: var(--global-whitespace-base);
+  display: grid;
+  place-items: center;
+  background-color: var(--global-page-backgroundColor);
 }
 
 /*------------------------------------*\

@@ -13,13 +13,14 @@
       <link rel="stylesheet" href="css/screen.css"> 
       <link rel="stylesheet" href="css/normalize.css">
       <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-      <script src="script/dataHandler.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
       <script src="script/app.js"></script>
+      
 
   </head>
   <body>
     <section class="o-row o-row--lg">
-      <div class="o-container u-max-width-xs">   
+      <div class="o-container u-max-width-lg">   
         <h1 class="c-logo">    
           <svg class="c-logo__symbol" id="Hourglass" data-name="Hourglass" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112.24 31.84">
             <g>
@@ -74,7 +75,9 @@
                 <!-- <button class="o-button-reset c-button js-btn">Calculate!</button> -->
                 <input type= "button" class="o-button-reset c-button js-btn" value="Calculate!" />
             </p>
-            <p>There are still 240 days to the <span class="js-selected-holiday">summer</span> holiday.</p>
+            <span class="js-result">
+               <p>There are still <span class="js-days-left">240</span> <span class="js-days">day(s)</span> to the <span class="js-selected-holiday">summer</span> holiday.</p>
+            </span>
             </div>
           </div>
         </form>

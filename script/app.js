@@ -1,43 +1,9 @@
-let htmlHolidays;
-
-const drawChart = () => {
-  var options = {
-    chart: {
-      height: 220,
-      type: 'radialBar',
-    },
-    series: [70],
-    colors: ['#9b47cc'],
-    plotOptions: {
-      radialBar: {
-        hollow: {
-          margin: 15,
-          size: '70%',
-        },
-
-        track: {
-          background: '#19171a',
-        },
-
-        dataLabels: {
-          showOn: 'always',
-          name: {
-            show: false,
-          },
-          value: {
-            color: '#19171a',
-            fontSize: '24px',
-            fontFamily: 'Metropolis Web',
-            fontWeight: 400,
-            show: true,
-          },
-        },
-      },
-    },
-  };
-  var DayChart = new ApexCharts(document.querySelector('.js-chart'), options);
-  DayChart.render();
-};
+let htmlHolidays, htmlBtn, htmlSelectedHoliday, htmlDaysLeft, htmlDays, htmlResult;
+let christmasHoliday, springHoliday, easterHoliday, summerHoliday, autumnHoliday, dateToday;
+let dayPercentage;
+let resultForChart, result;
+dateToday = new Date();
+dateTodayStr = moment(dateToday).format('YYYY-MM-DD');
 
 const getWeekday = (weekday) => {
   switch (weekday) {
@@ -137,45 +103,128 @@ const showResult = (queryResponse) => {
   // om een correcte hoeveelheid resterende dagen te berekenen
   if (leapYear(year) == true) {
     daysLeftThisYear.innerHTML = 366 - queryResponse.day_of_year;
+    dayPercentage = Math.round((queryResponse.day_of_year / 366) * 100);
   } else if (leapYear(year) == false) {
     daysLeftThisYear.innerHTML = 365 - queryResponse.day_of_year;
+    dayPercentage = Math.round((queryResponse.day_of_year / 365) * 100);
   }
+  drawChart(dayPercentage);
+  dateToday = queryResponse.datetime;
 };
 
 const showHoliday = (queryResponse) => {
   let InnerHTML = '';
   for (let holiday of queryResponse) {
     InnerHTML += `<option value="${holiday.abbr}">${holiday.name}</option>`;
+    if (holiday.abbr == 'christmas') {
+      christmasHoliday = holiday.startDay;
+    }
+    if (holiday.abbr == 'spring') {
+      springHoliday = holiday.startDay;
+    }
+    if (holiday.abbr == 'easter') {
+      easterHoliday = holiday.startDay;
+    }
+    if (holiday.abbr == 'summer') {
+      summerHoliday = holiday.startDay;
+    }
+    if (holiday.abbr == 'autumn') {
+      autumnHoliday = holiday.startDay;
+    }
   }
   htmlHolidays.innerHTML += InnerHTML;
 };
 
-// const calculateDays = () => {
-//   const btn = document.querySelector('.js-btn');
-
-//   // btn.onclick = (e) => {
-//   //   e.preventDefault();
-//   //   htmlHolidays.addEventListener('input', () => {
-//   //     selectedHoliday.innerHTML = htmlHolidays.value;
-//   //   });
-
-//   btn.addEventListener('click', () => {
-//     checkInput();
-//   });
-// };
-
 const addEventListeners = () => {
-  const btn = document.querySelector('.js-btn');
-  btn.addEventListener('click', () => {
-    checkInput();
+  htmlBtn.addEventListener('click', () => {
+    console.log('checking...');
+    htmlResult.style.display = '';
+    htmlSelectedHoliday.innerHTML = `${htmlHolidays.value}`;
+    if (htmlHolidays.value == 'christmas') {
+      calculateDaysLeft(dateTodayStr, christmasHoliday);
+    }
+    if (htmlHolidays.value == 'spring') {
+      calculateDaysLeft(dateTodayStr, springHoliday);
+    }
+    if (htmlHolidays.value == 'easter') {
+      calculateDaysLeft(dateTodayStr, easterHoliday);
+    }
+    if (htmlHolidays.value == 'summer') {
+      calculateDaysLeft(dateTodayStr, summerHoliday);
+    }
+    if (htmlHolidays.value == 'autumn') {
+      calculateDaysLeft(dateTodayStr, autumnHoliday);
+    }
+    console.log(resultForChart);
+    drawChart(resultForChart);
   });
 };
-const checkInput = () => {
-  console.log('checking...');
-  const selectedHoliday = document.querySelector('.js-selected-holiday');
-  htmlHolidays.addEventListener('input', () => {
-    selectedHoliday.innerHTML = `${htmlHolidays.value}`;
-  });
+
+const calculateDaysLeft = (date1, date2) => {
+  date1 = date1.split('-');
+  date2 = date2.split('-');
+
+  date1 = new Date(date1[0], date1[1], date1[2]);
+  date2 = new Date(date2[0], date2[1], date2[2]);
+
+  date1_unixtime = parseInt(date1.getTime() / 1000);
+  date2_unixtime = parseInt(date2.getTime() / 1000);
+
+  var timeDifference = date2_unixtime - date1_unixtime;
+  var timeDifferenceInHours = timeDifference / 60 / 60;
+  var timeDifferenceInDays = timeDifferenceInHours / 24;
+  result = Math.round(timeDifferenceInDays);
+  htmlDaysLeft.innerHTML = `${result}`;
+  if (result <= 1) {
+    htmlDays.innerHTML = `day`;
+  } else {
+    htmlDays.innerHTML = `days`;
+  }
+
+  if (leapYear(new Date(dateToday).getUTCFullYear()) == true) {
+    resultForChart = Math.round(((366 - result) / 366) * 100);
+  } else {
+    resultForChart = Math.round(((365 - result) / 365) * 100);
+  }
+};
+
+const drawChart = (percentage) => {
+  var options = {
+    chart: {
+      height: 220,
+      type: 'radialBar',
+    },
+    series: [percentage],
+    colors: ['#9b47cc'],
+    plotOptions: {
+      radialBar: {
+        hollow: {
+          margin: 15,
+          size: '70%',
+        },
+
+        track: {
+          background: '#19171a',
+        },
+
+        dataLabels: {
+          showOn: 'always',
+          name: {
+            show: false,
+          },
+          value: {
+            color: '#19171a',
+            fontSize: '24px',
+            fontFamily: 'Metropolis Web',
+            fontWeight: 400,
+            show: true,
+          },
+        },
+      },
+    },
+  };
+  var DayChart = new ApexCharts(document.querySelector('.js-chart'), options);
+  DayChart.render();
 };
 
 const get = (url) => fetch(url).then((r) => r.json());
@@ -188,7 +237,7 @@ const getOnlineAPI = async (timezone) => {
 };
 
 const getLocalAPI = async (json) => {
-  const endPoint = `http://127.0.0.1:5500/${json}`;
+  const endPoint = `http://127.0.0.1:5501/${json}`;
   const holidayResponse = await get(endPoint);
   console.log({ holidayResponse });
   showHoliday(holidayResponse);
@@ -196,13 +245,18 @@ const getLocalAPI = async (json) => {
 
 const init = () => {
   htmlHolidays = document.querySelector('.js-holiday');
+  htmlBtn = document.querySelector('.js-btn');
+  htmlSelectedHoliday = document.querySelector('.js-selected-holiday');
+  htmlDaysLeft = document.querySelector('.js-days-left');
+  htmlDays = document.querySelector('.js-days');
+  htmlResult = document.querySelector('.js-result');
+  htmlResult.style.display = 'none';
   addEventListeners();
 };
 
 document.addEventListener('DOMContentLoaded', () => {
   console.info('DOM geladen');
   init();
-  drawChart();
   // calculateDays();
   getLocalAPI('holiday.json');
   getOnlineAPI('Europe/Brussels');
