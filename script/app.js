@@ -1,4 +1,4 @@
-let htmlHolidays, htmlBtn, htmlSelectedHoliday, htmlDaysLeft, htmlDays, htmlResult;
+let htmlHolidays, htmlBtn, htmlSelectedHoliday, htmlDaysLeft, htmlDays, htmlResult, htmlLoading;
 let christmasHoliday, springHoliday, easterHoliday, summerHoliday, autumnHoliday, dateToday;
 let dayPercentage;
 let resultForChart, result;
@@ -135,28 +135,37 @@ const showHoliday = (queryResponse) => {
   htmlHolidays.innerHTML += InnerHTML;
 };
 
+// sleep time expects milliseconds
+function sleep(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+
 const addEventListeners = () => {
   htmlBtn.addEventListener('click', () => {
     console.log('checking...');
-    htmlResult.style.display = '';
-    htmlSelectedHoliday.innerHTML = `${htmlHolidays.value}`;
-    if (htmlHolidays.value == 'christmas') {
-      calculateDaysLeft(dateTodayStr, christmasHoliday);
-    }
-    if (htmlHolidays.value == 'spring') {
-      calculateDaysLeft(dateTodayStr, springHoliday);
-    }
-    if (htmlHolidays.value == 'easter') {
-      calculateDaysLeft(dateTodayStr, easterHoliday);
-    }
-    if (htmlHolidays.value == 'summer') {
-      calculateDaysLeft(dateTodayStr, summerHoliday);
-    }
-    if (htmlHolidays.value == 'autumn') {
-      calculateDaysLeft(dateTodayStr, autumnHoliday);
-    }
-    console.log(resultForChart);
-    drawChart(resultForChart);
+    htmlLoading.style.display = '';
+    sleep(1000).then(() => {
+      htmlLoading.style.display = 'none';
+      htmlResult.style.display = '';
+      htmlSelectedHoliday.innerHTML = `${htmlHolidays.value}`;
+      if (htmlHolidays.value == 'christmas') {
+        calculateDaysLeft(dateTodayStr, christmasHoliday);
+      }
+      if (htmlHolidays.value == 'spring') {
+        calculateDaysLeft(dateTodayStr, springHoliday);
+      }
+      if (htmlHolidays.value == 'easter') {
+        calculateDaysLeft(dateTodayStr, easterHoliday);
+      }
+      if (htmlHolidays.value == 'summer') {
+        calculateDaysLeft(dateTodayStr, summerHoliday);
+      }
+      if (htmlHolidays.value == 'autumn') {
+        calculateDaysLeft(dateTodayStr, autumnHoliday);
+      }
+      console.log(resultForChart);
+      drawChart(resultForChart);
+    });
   });
 };
 
@@ -208,7 +217,7 @@ const drawChart = (percentage) => {
         },
 
         dataLabels: {
-          showOn: 'always',
+          show: true,
           name: {
             show: false,
           },
@@ -218,6 +227,7 @@ const drawChart = (percentage) => {
             fontFamily: 'Metropolis Web',
             fontWeight: 400,
             show: true,
+            offsetY: 10,
           },
         },
       },
@@ -250,7 +260,9 @@ const init = () => {
   htmlDaysLeft = document.querySelector('.js-days-left');
   htmlDays = document.querySelector('.js-days');
   htmlResult = document.querySelector('.js-result');
+  htmlLoading = document.querySelector('.js-load-container');
   htmlResult.style.display = 'none';
+  htmlLoading.style.display = 'none';
   addEventListeners();
 };
 

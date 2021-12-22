@@ -53,17 +53,14 @@
   --global-transitionDuration-alpha: 0.1s;
   --global-transitionDuration-beta: 0.2s;
   --global-transitionDuration-gamma: 0.3s;
+  --global-transition-alpha: 0.2s;
+  --global-transition-beta: 1s;
+
+  --pi: 3.14159265359;
 
   /* border radius */
   --global-borderRadius: 3px;
   --global-borderWidth: 1px;
-
-  /* transitions */
-  --global-transitionEasing-out: ease-out;
-  --global-transitionEasing-out-cubic: cubic-bezier(0.22, 0.61, 0.36, 1);
-  --global-transitionDuration-alpha: 0.1s;
-  --global-transitionDuration-beta: 0.2s;
-  --global-transitionDuration-gamma: 0.3s;
 
   /* Baseline settings */
   --global-baseline: 8px;
@@ -281,6 +278,11 @@ input::placeholder {
 }
 
 /* size modifiers */
+
+.o-row--md {
+  padding-top: var(--global-whitespace-md);
+  padding-bottom: var(--global-whitespace-sm);
+}
 
 .o-row--lg {
   padding-top: var(--global-whitespace-xl);
@@ -735,6 +737,49 @@ input::placeholder {
 .c-custom-select {
   display: block;
   position: relative;
+}
+
+.c-custom-select__symbol {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  top: 0.6rem;
+  right: 0.75rem;
+  pointer-events: none;
+  fill: var(--global-color-neutral-light);
+}
+
+/*
+    Component: Hourglass
+*/
+
+.c-load-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 150px;
+}
+
+.c-loader {
+  --loader-viewbox: 60px;
+  --animation-duration: 1.5s;
+  width: var(--loader-viewbox);
+  height: var(--loader-viewbox);
+}
+
+.c-loader__hourglass {
+  stroke: var(--global-color-x-dark);
+  fill: transparent;
+  animation: rotateHourglass var(--animation-duration) linear infinite;
+  transform-origin: center;
+}
+
+@keyframes rotateHourglass {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /*------------------------------------*\

@@ -19,7 +19,7 @@
 
   </head>
   <body>
-    <section class="o-row o-row--lg">
+    <section class="o-row o-row--md">
       <div class="o-container u-max-width-lg">   
         <h1 class="c-logo">    
           <svg class="c-logo__symbol" id="Hourglass" data-name="Hourglass" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112.24 31.84">
@@ -68,6 +68,9 @@
                     <option value="holiday4">Holiday 4</option>
                     <option value="holiday5">Holiday 5</option> -->
                 </select>
+                <svg class="c-custom-select__symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M7,10l5,5,5-5Z"/>
+              </svg>
                 </span>
 
             </p>
@@ -75,6 +78,18 @@
                 <!-- <button class="o-button-reset c-button js-btn">Calculate!</button> -->
                 <input type= "button" class="o-button-reset c-button js-btn" value="Calculate!" />
             </p>
+            <div>
+              <aside class="c-load-container js-load-container">
+                  <svg class="c-loader c-logo c-logo__symbol js-loader" data-name="loading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112.24 31.84">
+                    <g class="c-loader__hourglass" id="loader">
+                      <path class="c-logo__path c-logo__path--1" d="M33.21,17.5v0a.44.44,0,0,1,.35-.46c4.59-.62,8.16-5.23,8.16-10.83a12.9,12.9,0,0,0-.14-1.88.41.41,0,0,0-.39-.39H23.82a.41.41,0,0,0-.38.39,12.9,12.9,0,0,0-.14,1.88c0,5.6,3.56,10.21,8.15,10.83a.45.45,0,0,1,.36.46v0a.44.44,0,0,1-.36.46c-4.59.63-8.16,5.25-8.15,10.85a12.9,12.9,0,0,0,.14,1.88.41.41,0,0,0,.39.39l17.37,0a.41.41,0,0,0,.38-.39,12.9,12.9,0,0,0,.14-1.88c0-5.59-3.57-10.2-8.16-10.82A.43.43,0,0,1,33.21,17.5Z" transform="translate(-20.9 -1.58)"/>
+                      <rect class="c-logo__path c-logo__path--2" x="0.38" y="0.38" width="22.47" height="2.22" rx="1.11"/>
+                      <rect class="c-logo__path c-logo__path--2" x="0.38" y="29.24" width="22.47" height="2.22" rx="1.11"/>
+                      <path class="c-logo__path c-logo__path--3" d="M39.57,27.13H33.4a.7.7,0,0,1-.62-.77V17.67A1.6,1.6,0,0,1,33.91,16a6.8,6.8,0,0,0,4.9-3.57c.09-.18,0-.42-.2-.42H26.42c-.18,0-.29.24-.2.42A6.8,6.8,0,0,0,31.12,16a1.6,1.6,0,0,1,1.13,1.64v8.69a.71.71,0,0,1-.62.77H25.36a.57.57,0,0,0-.45.23C24,28.55,23.81,30,25.65,30H39.29c2.07,0,1.62-1.4.73-2.59A.56.56,0,0,0,39.57,27.13Z" transform="translate(-20.9 -1.58)"/>
+                    </g>
+                </svg>
+              </aside>                   
+            </div>
             <span class="js-result">
                <p>There are still <span class="js-days-left">240</span> <span class="js-days">day(s)</span> to the <span class="js-selected-holiday">summer</span> holiday.</p>
             </span>
@@ -82,6 +97,7 @@
           </div>
         </form>
       </div>
+
     </section>
   </body>
 </html>
