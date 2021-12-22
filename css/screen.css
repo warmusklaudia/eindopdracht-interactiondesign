@@ -38,9 +38,7 @@
   --global-color-neutral-xx-dark: #312e33;
   --global-color-neutral-xxx-dark: #19171a;
 
-  --global-color-error: #ff3333;
-  --global-color-error-transparent: #ff3333bf;
-  --global-color-error-x-transparent: #ff33334d;
+  --global-color-beta: #3385ff;
 
   /* global page settings */
   --global-page-color: var(--global-color-neutral-xxx-dark);
