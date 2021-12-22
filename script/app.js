@@ -5,6 +5,34 @@ let resultForChart, result;
 dateToday = new Date();
 dateTodayStr = moment(dateToday).format('YYYY-MM-DD');
 
+holidayJson = [
+  {
+    name: 'Christmas holiday',
+    abbr: 'christmas',
+    startDay: '2021-12-27',
+  },
+  {
+    name: 'Spring holiday',
+    abbr: 'spring',
+    startDay: '2022-02-28',
+  },
+  {
+    name: 'Easter holiday',
+    abbr: 'easter',
+    startDay: '2022-04-04',
+  },
+  {
+    name: 'Summer holiday',
+    abbr: 'summer',
+    startDay: '2022-07-01',
+  },
+  {
+    name: 'Autumn holiday',
+    abbr: 'autumn',
+    startDay: '2022-10-31',
+  },
+];
+
 const getWeekday = (weekday) => {
   switch (weekday) {
     case 0:
@@ -262,13 +290,6 @@ const getOnlineAPI = async (timezone) => {
   showResult(timeResponse);
 };
 
-const getLocalAPI = async (json) => {
-  const endPoint = `http://127.0.0.1:5501/${json}`;
-  const holidayResponse = await get(endPoint);
-  console.log({ holidayResponse });
-  showHoliday(holidayResponse);
-};
-
 const init = () => {
   htmlHolidays = document.querySelector('.js-holiday');
   htmlBtn = document.querySelector('.js-btn');
@@ -287,6 +308,6 @@ document.addEventListener('DOMContentLoaded', () => {
   console.info('DOM geladen');
   init();
   // calculateDays();
-  getLocalAPI('holiday.json');
+  showHoliday(holidayJson);
   getOnlineAPI('Europe/Brussels');
 });
