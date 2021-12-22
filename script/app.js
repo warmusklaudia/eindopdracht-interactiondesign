@@ -201,9 +201,9 @@ const calculateDaysLeft = (date1, date2) => {
   result = Math.round(timeDifferenceInDays);
   htmlDaysLeft.innerHTML = `${result}`;
   if (result <= 1) {
-    htmlDays.innerHTML = `day`;
+    htmlDays.innerHTML = `day `;
   } else {
-    htmlDays.innerHTML = `days`;
+    htmlDays.innerHTML = `days `;
   }
 
   if (leapYear(new Date(dateToday).getUTCFullYear()) == true) {
