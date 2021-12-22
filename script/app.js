@@ -191,22 +191,18 @@ const addEventListeners = () => {
     sleep(1000).then(() => {
       htmlLoading.style.display = 'none';
       htmlResult.style.display = '';
-      htmlSelectedHoliday.innerHTML = `${htmlHolidays.value}`;
       if (htmlHolidays.value == 'christmas') {
         calculateDaysLeft(dateTodayStr, christmasHoliday);
-      }
-      if (htmlHolidays.value == 'spring') {
+      } else if (htmlHolidays.value == 'spring') {
         calculateDaysLeft(dateTodayStr, springHoliday);
-      }
-      if (htmlHolidays.value == 'easter') {
+      } else if (htmlHolidays.value == 'easter') {
         calculateDaysLeft(dateTodayStr, easterHoliday);
-      }
-      if (htmlHolidays.value == 'summer') {
+      } else if (htmlHolidays.value == 'summer') {
         calculateDaysLeft(dateTodayStr, summerHoliday);
-      }
-      if (htmlHolidays.value == 'autumn') {
+      } else if (htmlHolidays.value == 'autumn') {
         calculateDaysLeft(dateTodayStr, autumnHoliday);
       }
+      htmlSelectedHoliday.innerHTML = `${htmlHolidays.value}`;
       console.log(resultForChart);
       drawChart(resultForChart);
     });
