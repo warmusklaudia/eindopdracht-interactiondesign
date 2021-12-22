@@ -32,6 +32,24 @@ holidayJson = [
     startDay: '2022-10-31',
   },
 ];
+//if online API won't work....
+timeJson = {
+  abbreviation: 'CET',
+  client_ip: '2a02:1811:8c12:df00:5dcb:e3b3:9465:b0da',
+  datetime: '2021-12-23T22:41:30.820315+01:00',
+  day_of_week: 4,
+  day_of_year: 357,
+  dst: false,
+  dst_from: null,
+  dst_offset: 0,
+  dst_until: null,
+  raw_offset: 3600,
+  timezone: 'Europe/Brussels',
+  unixtime: 1640209290,
+  utc_datetime: '2021-12-23T21:41:30.820315+00:00',
+  utc_offset: '+01:00',
+  week_number: 51,
+};
 
 const getWeekday = (weekday) => {
   switch (weekday) {
@@ -188,7 +206,7 @@ const addEventListeners = () => {
   htmlBtn.addEventListener('click', () => {
     console.log('checking...');
     htmlLoading.style.display = '';
-    sleep(1000).then(() => {
+    sleep(1200).then(() => {
       htmlLoading.style.display = 'none';
       htmlResult.style.display = '';
       if (htmlHolidays.value == 'christmas') {
@@ -303,7 +321,7 @@ const init = () => {
 document.addEventListener('DOMContentLoaded', () => {
   console.info('DOM geladen');
   init();
-  // calculateDays();
   showHoliday(holidayJson);
+  //showResult(timeJson);
   getOnlineAPI('Europe/Brussels');
 });
