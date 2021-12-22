@@ -101,7 +101,7 @@ html {
   color: var(--global-page-color);
   font-size: 100%;
   line-height: 1.5;
-  font-family: 'Metropolis Web', sans-serif;
+  font-family: 'Metropolis Web', 'Inter', sans-serif;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
