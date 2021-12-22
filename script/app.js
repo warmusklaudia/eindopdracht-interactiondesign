@@ -1,4 +1,4 @@
-let htmlHolidays, htmlBtn, htmlSelectedHoliday, htmlDaysLeft, htmlDays, htmlResult, htmlLoading;
+let htmlHolidays, htmlBtn, htmlSelectedHoliday, htmlDaysLeft, htmlDays, htmlResult, htmlLoading, htmlSuffix;
 let christmasHoliday, springHoliday, easterHoliday, summerHoliday, autumnHoliday, dateToday;
 let dayPercentage;
 let resultForChart, result;
@@ -92,6 +92,8 @@ const showResult = (queryResponse) => {
   const year = new Date(queryResponse.datetime).getUTCFullYear();
 
   dayOfYear.innerHTML = `${queryResponse.day_of_year}`;
+  getOrdinalNum(queryResponse.day_of_year);
+
   dayOfWeek.innerHTML = getWeekday(queryResponse.day_of_week);
   dayOfMonth.innerHTML = new Date(queryResponse.datetime).getUTCDate();
 
@@ -136,9 +138,23 @@ const showHoliday = (queryResponse) => {
 };
 
 // sleep time expects milliseconds
-function sleep(time) {
+const sleep = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time));
-}
+};
+
+const getOrdinalNum = (number) => {
+  let selector;
+
+  if (number <= 0) {
+    selector = 4;
+  } else if ((number > 3 && number < 21) || number % 10 > 3) {
+    selector = 0;
+  } else {
+    selector = number % 10;
+  }
+
+  htmlSuffix.innerHTML = ['th', 'st', 'nd', 'rd', ''][selector];
+};
 
 const addEventListeners = () => {
   htmlBtn.addEventListener('click', () => {
@@ -261,6 +277,7 @@ const init = () => {
   htmlDays = document.querySelector('.js-days');
   htmlResult = document.querySelector('.js-result');
   htmlLoading = document.querySelector('.js-load-container');
+  htmlSuffix = document.querySelector('.js-suffix');
   htmlResult.style.display = 'none';
   htmlLoading.style.display = 'none';
   addEventListeners();
