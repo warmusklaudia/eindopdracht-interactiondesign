@@ -268,7 +268,7 @@ const drawChart = (percentage) => {
           value: {
             color: '#19171a',
             fontSize: '24px',
-            fontFamily: 'Metropolis Web',
+            fontFamily: 'Inter',
             fontWeight: 400,
             show: true,
             offsetY: 10,
