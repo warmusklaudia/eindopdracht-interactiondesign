@@ -322,6 +322,6 @@ document.addEventListener('DOMContentLoaded', () => {
   console.info('DOM geladen');
   init();
   showHoliday(holidayJson);
-  //showResult(timeJson);
-  getOnlineAPI('Europe/Brussels');
+  showResult(timeJson);
+  //getOnlineAPI('Europe/Brussels');
 });
